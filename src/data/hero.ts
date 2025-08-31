@@ -1,5 +1,5 @@
 export const heroDetails = {
-    heading: 'Smart, Secure, Simple Financial Management',
-    subheading: 'From effortless budgeting to real-time investment insights, Finwise puts you in control of your money like never before',
-    centerImageSrc: '/images/hero-mockup.webp',
+    heading: 'Two Parents. One App. Zero Conflict.',
+    subheading: 'Parentfully helps parents and co-parents align, plan, and focus on what matters most—raising thriving kids—whether you live together or apart.',
+    centerImageSrc: '/images/Hero.png',
 }

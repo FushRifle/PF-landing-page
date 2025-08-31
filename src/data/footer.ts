@@ -7,19 +7,19 @@ export const footerDetails: {
     telephone: string;
     socials: ISocials;
 } = {
-    subheading: "Empowering businesses with cutting-edge financial technology solutions.",
+    subheading: "Parenting Together Made Simple, Connected & Effective.",
     quickLinks: [
         {
             text: "Features",
             url: "#features"
         },
         {
-            text: "Pricing",
-            url: "#pricing"
+            text: "About Us",
+            url: "#about"
         },
         {
-            text: "Testimonials",
-            url: "#testimonials"
+            text: "Contact",
+            url: "#contact"
         }
     ],
     email: 'address@yoursite.com',

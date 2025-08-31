@@ -1,28 +1,62 @@
 import { ctaDetails } from "@/data/cta"
 
-import AppStoreButton from "./AppStoreButton"
-import PlayStoreButton from "./PlayStoreButton"
-
 const CTA: React.FC = () => {
     return (
-        <section id="cta" className="mt-10 mb-5 lg:my-20">
-            <div className="relative h-full w-full z-10 mx-auto py-12 sm:py-20">
-                <div className="h-full w-full">
-                    <div className="rounded-3xl opacity-95 absolute inset-0 -z-10 h-full w-full bg-[#050a02] bg-[linear-gradient(to_right,#12170f_1px,transparent_1px),linear-gradient(to_bottom,#12170f_1px,transparent_1px)] bg-[size:6rem_4rem]">
-                        <div className="rounded-3xl absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_50%_500px,#1C1C02,transparent)]"></div>
+        <section id="cta" className="mt-10 mb-5 lg:my-20 px-4">
+            <div className="relative max-w-7xl mx-auto rounded-2xl bg-[#005A31] text-white text-center p-10 sm:p-16">
+                {/* Heading */}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                    {ctaDetails.heading}
+                </h2>
+                <p className="text-base text-center sm:text-lg opacity-90 max-w-2xl mx-auto mb-8">
+                    {ctaDetails.subheading}
+                </p>
+
+                {/* Form */}
+                <form className="space-y-4 max-w-md mx-auto">
+                    <div className="flex flex-col text-left">
+                        <label className="mb-1 text-sm font-medium">Name</label>
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
                     </div>
 
-                    <div className="h-full flex flex-col items-center justify-center text-white text-center px-5">
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl md:leading-tight font-semibold mb-4 max-w-2xl">{ctaDetails.heading}</h2>
-
-                        <p className="mx-auto max-w-xl md:px-5">{ctaDetails.subheading}</p>
-
-                        <div className="mt-4 flex flex-col sm:flex-row items-center sm:gap-4">
-                        <AppStoreButton />
-                        <PlayStoreButton />
-                        </div>
+                    <div className="flex flex-col text-left">
+                        <label className="mb-1 text-sm font-medium">Email</label>
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
                     </div>
-                </div>
+
+                    <div className="flex flex-col text-left">
+                        <label className="mb-1 text-sm font-medium">Phone Number</label>
+                        <input
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
+                    </div>
+
+                    <div className="flex flex-col text-left">
+                        <label className="mb-1 text-sm font-medium">Device type</label>
+                        <input
+                            type="text"
+                            placeholder="iOS / Android"
+                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="w-full mt-4 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors"
+                    >
+                        Join Waitlist
+                    </button>
+                </form>
             </div>
         </section>
     )
