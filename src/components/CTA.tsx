@@ -1,4 +1,5 @@
 import { ctaDetails } from "@/data/cta"
+import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa"
 
 const CTA: React.FC = () => {
     return (
@@ -31,32 +32,43 @@ const CTA: React.FC = () => {
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
                     </div>
-
-                    <div className="flex flex-col text-left">
-                        <label className="mb-1 text-sm font-medium">Phone Number</label>
-                        <input
-                            type="tel"
-                            placeholder="Enter your phone number"
-                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
-                        />
+                    <div className="mt-12">
+                        <button
+                            type="submit"
+                            className="w-full mt-4 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors"
+                        >
+                            Join Waitlist
+                        </button>
                     </div>
 
-                    <div className="flex flex-col text-left">
-                        <label className="mb-1 text-sm font-medium">Device type</label>
-                        <input
-                            type="text"
-                            placeholder="iOS / Android"
-                            className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
-                        />
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full mt-4 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors"
-                    >
-                        Join Waitlist
-                    </button>
                 </form>
+
+                {/* Divider */}
+                <div className="flex items-center my-6">
+                    <hr className="flex-1 border-gray-400" />
+                    <span className="px-3 text-sm opacity-80">or join through</span>
+                    <hr className="flex-1 border-gray-400" />
+                </div>
+
+                {/* WhatsApp / Telegram buttons */}
+                <div className="flex justify-center gap-10">
+                    <a
+                        href="https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_chat_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-green-500 hover:bg-green-600 transition-colors shadow-md font-semibold"
+                    >
+                        <FaWhatsapp size={20} /> WhatsApp
+                    </a>
+                    <a
+                        href="https://t.me/+NJfluxRPQsBlZGI5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors shadow-md font-semibold"
+                    >
+                        <FaTelegramPlane size={20} /> Telegram
+                    </a>
+                </div>
             </div>
         </section>
     )

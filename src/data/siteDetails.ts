@@ -1,6 +1,6 @@
 export const siteDetails = {
     siteName: 'ParentFully',
-    siteUrl: 'https://parentfully.vercel.app/',
+    siteUrl: 'https://parentfully.app/',
     metadata: {
         title: 'ParentFully',
         description: 'ParentFully empowers businesses with cutting-edge technology solutions to drive success and efficiency.',
