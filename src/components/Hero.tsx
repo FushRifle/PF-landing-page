@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { heroDetails } from '@/data/hero';
+import Link from "next/link"
+
 
 const Hero: React.FC = () => {
     return (
@@ -32,11 +34,14 @@ const Hero: React.FC = () => {
                     </p>
 
                     {/* CTA Button */}
-                    <button
-                        className="mt-10 px-6 py-3 bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors duration-200 rounded-lg text-base sm:text-lg"
-                    >
-                        Join the Waitlist
-                    </button>
+                    <Link href="#cta" scroll={true}>
+
+                        <button
+                            className="mt-10 px-6 py-3 bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors duration-200 rounded-lg text-base sm:text-lg"
+                        >
+                            Join the Waitlist
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Right side image */}

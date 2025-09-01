@@ -57,6 +57,7 @@ const Header: React.FC = () => {
                         <li>
                             <Link
                                 href="#cta"
+                                scroll={true}
                                 className="text-white bg-[#F38500] hover:bg-primary-accent px-6 py-2 rounded-lg transition-colors"
                             >
                                 Join Waitlist

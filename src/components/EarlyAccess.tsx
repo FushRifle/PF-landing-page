@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 
 const EarlyAccess: React.FC = () => {
     return (
@@ -16,9 +17,11 @@ const EarlyAccess: React.FC = () => {
                 </div>
 
                 {/* Button */}
-                <button className="px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors">
-                    Join Now
-                </button>
+                <Link href="#cta" scroll={true}>
+                    <button className="px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors">
+                        Join Now
+                    </button>
+                </Link>
             </div>
         </section>
     )

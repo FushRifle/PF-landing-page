@@ -1,21 +1,51 @@
-'use client';
+"use client"
 
 import { useState } from "react"
 import { ctaDetails } from "@/data/cta"
-import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa"
+import Modal from "./WaitlistModal"
 
 const CTA: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        device: "",
+    })
+    const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+    const validate = () => {
+        const newErrors: { [key: string]: string } = {}
+
+        if (!formData.name.trim()) newErrors.name = "Name is required"
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required"
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Invalid email format"
+        }
+        if (!formData.phone.trim()) newErrors.phone = "Phone number is required"
+        if (!formData.device.trim()) newErrors.device = "Device type is required"
+
+        setErrors(newErrors)
+        return Object.keys(newErrors).length === 0
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        setIsOpen(true) // open modal after submitting
+        if (validate()) {
+            setIsOpen(true)
+        }
+    }
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     return (
         <section id="cta" className="mt-10 mb-5 lg:my-20 px-4">
             <div className="relative max-w-7xl mx-auto rounded-2xl bg-[#005A31] text-white text-center p-10 sm:p-16">
-                {/* Heading */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                     {ctaDetails.heading}
                 </h2>
@@ -23,42 +53,67 @@ const CTA: React.FC = () => {
                     {ctaDetails.subheading}
                 </p>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+                    {/* Name */}
                     <div className="flex flex-col text-left">
                         <label className="mb-1 text-sm font-medium">Name</label>
                         <input
                             type="text"
+                            name="name"
                             placeholder="Enter your name"
+                            value={formData.name}
+                            onChange={handleChange}
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
+                        {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
                     </div>
 
+                    {/* Email */}
                     <div className="flex flex-col text-left">
                         <label className="mb-1 text-sm font-medium">Email</label>
                         <input
                             type="email"
+                            name="email"
                             placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={handleChange}
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
+                        {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
                     </div>
 
+                    {/* Phone */}
                     <div className="flex flex-col text-left">
                         <label className="mb-1 text-sm font-medium">Phone Number</label>
                         <input
                             type="tel"
+                            name="phone"
                             placeholder="Enter your phone number"
+                            value={formData.phone}
+                            onChange={handleChange}
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
+                        {errors.phone && <p className="text-red-400 text-sm">{errors.phone}</p>}
                     </div>
 
+                    {/* Device */}
+                    {/* Device */}
                     <div className="flex flex-col text-left">
                         <label className="mb-1 text-sm font-medium">Device type</label>
-                        <input
-                            type="text"
-                            placeholder="iOS / Android"
+                        <select
+                            name="device" // ✅ important
+                            value={formData.device} // ✅ controlled
+                            onChange={handleChange} // ✅ update formData
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
-                        />
+                            required
+                        >
+                            <option value="" disabled>
+                                Select your device
+                            </option>
+                            <option value="iOS">iOS</option>
+                            <option value="Android">Android</option>
+                        </select>
+                        {errors.device && <p className="text-red-400 text-sm">{errors.device}</p>}
                     </div>
 
                     <button
@@ -70,43 +125,7 @@ const CTA: React.FC = () => {
                 </form>
             </div>
 
-            {/* Modal */}
-            {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-                    <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto text-center relative">
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
-                        >
-                            ×
-                        </button>
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">
-                            You have successfully joined the waitlist. 🎉
-                        </h3>
-                        <p className="text-gray-700 mb-6">
-                            Please choose your preferred means of communication
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <a
-                                href="https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_c"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-green-500 hover:bg-green-600 transition-colors shadow-md font-semibold text-white"
-                            >
-                                <FaWhatsapp size={20} /> WhatsApp
-                            </a>
-                            <a
-                                href="https://t.me/+NJfluxRPQsBlZGI5"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors shadow-md font-semibold text-white"
-                            >
-                                <FaTelegramPlane size={20} /> Telegram
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {isOpen && <Modal onClose={() => setIsOpen(false)} />}
         </section>
     )
 }
