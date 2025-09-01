@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     return (
         <section
             id="hero"
-            className="relative w-full overflow-hidden mt-20 mb-10 py-10 md:py-16 md:mt-25"
+            className="relative w-full overflow-hidden mb-10 py-10 md:py-16 md:mt-25"
         >
             {/* Base background color */}
             <div className="absolute inset-0 -z-50 bg-[#E2FDF8]" />
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
             />
 
             {/* Content container (constrained width) */}
-            <div className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-2 gap-12 md:gap-20">
+            <div className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-2 gap-12 md:gap-20  mt-20">
                 {/* Left side text */}
                 <div className="flex-1 text-left md:text-left max-w-5xl z-10 left-0">
                     <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-7xl font-bold text-foreground  leading-[1.4] md:leading-[1.3] text-[#005A31]">

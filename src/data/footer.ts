@@ -22,16 +22,18 @@ export const footerDetails: {
             url: "#contact"
         }
     ],
-    email: 'address@yoursite.com',
+    email: 'parentfully@gmail.com',
     telephone: '+1 (123) 456-7890',
     socials: {
         // github: 'https://github.com',
         // x: 'https://twitter.com/x',
-        twitter: 'https://twitter.com/Twitter',
-        facebook: 'https://facebook.com',
+        // twitter: 'https://twitter.com/Twitter',
         // youtube: 'https://youtube.com',
-        linkedin: 'https://www.linkedin.com',
         // threads: 'https://www.threads.net',
-        instagram: 'https://www.instagram.com',
+        //facebook: 'https://facebook.com',
+        // linkedin: 'https://www.linkedin.com',
+        //instagram: 'https://www.instagram.com',
+        whatsapp: 'https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_chat_link',
+        telegram: 'https://t.me/+NJfluxRPQsBlZGI5',
     }
 }
