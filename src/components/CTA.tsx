@@ -6,6 +6,7 @@ import Modal from "./WaitlistModal"
 
 const CTA: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -30,17 +31,35 @@ const CTA: React.FC = () => {
         return Object.keys(newErrors).length === 0
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        if (validate()) {
-            setIsOpen(true)
-        }
-    }
-
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!validate()) return
+
+        setLoading(true)
+        try {
+            const res = await fetch("/api/cta", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            })
+
+            if (res.ok) {
+                setIsOpen(true)
+                setFormData({ name: "", email: "", phone: "", device: "" })
+            } else {
+                alert("Failed to submit. Please try again.")
+            }
+        } catch (error) {
+            alert("Something went wrong.")
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -97,13 +116,12 @@ const CTA: React.FC = () => {
                     </div>
 
                     {/* Device */}
-                    {/* Device */}
                     <div className="flex flex-col text-left">
                         <label className="mb-1 text-sm font-medium">Device type</label>
                         <select
-                            name="device" // ✅ important
-                            value={formData.device} // ✅ controlled
-                            onChange={handleChange} // ✅ update formData
+                            name="device"
+                            value={formData.device}
+                            onChange={handleChange}
                             className="px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                             required
                         >
@@ -118,9 +136,35 @@ const CTA: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="w-full mt-4 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow-md hover:bg-orange-600 transition-colors"
+                        disabled={loading}
+                        className={`w-full mt-4 px-6 py-3 rounded-lg font-semibold shadow-md transition-colors
+              ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600 text-white"}
+            `}
                     >
-                        Join Waitlist
+                        {loading ? (
+                            <svg
+                                className="animate-spin h-5 w-5 mx-auto text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a12 12 0 00-12 12h4z"
+                                ></path>
+                            </svg>
+                        ) : (
+                            "Join Waitlist"
+                        )}
                     </button>
                 </form>
             </div>
