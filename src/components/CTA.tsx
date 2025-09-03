@@ -196,10 +196,10 @@ const CTA: React.FC = () => {
                                     containerStyle={{
                                         position: "relative",
                                         width: "100%",
-
                                     }}
                                     dropdownStyle={{
                                         maxHeight: "15rem",
+                                        maxWidth: "15rem",
                                         overflowY: "auto",
                                         backgroundColor: "white",
                                         color: "black",
@@ -207,7 +207,6 @@ const CTA: React.FC = () => {
                                         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
                                     }}
                                 />
-
                             </div>
                             {errors.phone && (
                                 <p className="text-red-300 text-sm mt-1">{errors.phone}</p>
@@ -233,22 +232,28 @@ const CTA: React.FC = () => {
 
                         {/* Device */}
                         <div className="flex flex-col text-left">
-                            <label htmlFor="device" className="mb-1 text-sm font-medium">Device type</label>
+                            <label htmlFor="device" className="mb-1 text-sm font-medium">
+                                Device type
+                            </label>
                             <select
                                 id="device"
                                 name="device"
                                 value={formData.device}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500 ${errors.device ? 'border border-red-500' : ''
+                                className={`w-full h-12 px-4 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500 ${errors.device ? "border border-red-500" : ""
                                     }`}
                                 aria-describedby={errors.device ? "device-error" : undefined}
                             >
-                                <option value="" disabled>Select your device</option>
+                                <option value="" disabled>
+                                    Select your device
+                                </option>
                                 <option value="iOS">iOS</option>
                                 <option value="Android">Android</option>
                             </select>
                             {errors.device && (
-                                <p id="device-error" className="text-red-300 text-sm mt-1">{errors.device}</p>
+                                <p id="device-error" className="text-red-300 text-sm mt-1">
+                                    {errors.device}
+                                </p>
                             )}
                         </div>
 

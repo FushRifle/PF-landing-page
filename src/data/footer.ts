@@ -22,7 +22,7 @@ export const footerDetails: {
             url: "#contact"
         }
     ],
-    email: 'join@parentfullyapp.com',
+    email: 'support@parentfullyapp.com',
     telephone: '+1 514 249 7924',
     socials: {
         // github: 'https://github.com',
