@@ -19,12 +19,21 @@ html {
 
 body {
   @apply text-lg;
-  
+
   color: var(--foreground);
   background: var(--background);
   font-family: "Source Sans 3", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 6px;
 }
 
 @layer utilities {
@@ -39,7 +48,12 @@ body {
   font-style: normal;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -49,6 +63,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply w-fit h-10 sm:h-12;
 }
 
-.benefit-section:last-of-type > div {
+.benefit-section:last-of-type>div {
   @apply mb-10;
 }

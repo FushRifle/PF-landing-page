@@ -22,8 +22,8 @@ export const footerDetails: {
             url: "#contact"
         }
     ],
-    email: 'parentfully@gmail.com',
-    telephone: '+1 (123) 456-7890',
+    email: 'join@parentfullyapp.com',
+    telephone: '+1 514 249 7924',
     socials: {
         // github: 'https://github.com',
         // x: 'https://twitter.com/x',

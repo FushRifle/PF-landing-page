@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
     try {
-        const { name, email, phone, device } = await req.json()
+        const { name, email, country, phone, device } = await req.json()
 
         const res = await fetch("https://api.brevo.com/v3/contacts", {
             method: "POST",
@@ -14,7 +14,8 @@ export async function POST(req: Request) {
             body: JSON.stringify({
                 email,
                 attributes: {
-                    NAME: name,
+                    FIRSTNAME: name,
+                    COUNTRY: country,
                     PHONE: phone,
                     DEVICE_TYPE: device,
                 },
