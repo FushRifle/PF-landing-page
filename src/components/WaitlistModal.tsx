@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
                     You have successfully joined the waitlist. 🎉
                 </h3>
                 <p className="text-gray-700 mb-6">
-                    Please choose your preferred means of communication
+                    ParentFully is more than an app - We are a community. Join our WhatsApp or Telegram groups for support, tips, and early updates.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <a
