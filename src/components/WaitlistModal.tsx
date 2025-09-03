@@ -12,17 +12,19 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
             <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto text-center relative">
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+                    className="absolute top-3 right-3 text-red-900 hover:text-gray-900 text-3xl"
                 >
                     ×
                 </button>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                     You have successfully joined the waitlist. 🎉
                 </h3>
-                <p className="text-gray-700 mb-6">
-                    ParentFully is more than an app - We are a community. Join our WhatsApp or Telegram groups for support, tips, and early updates.
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <h5>ParentFully is more than an app
+                    <br />
+                    We are a community. Join our WhatsApp or Telegram groups for support, tips, and early updates.
+                </h5>
+
+                <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                     <a
                         href="https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_c"
                         target="_blank"
