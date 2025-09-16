@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                     <a
-                        href="https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_c"
+                        href="https://chat.whatsapp.com/L3mNi85CQHB20wVUIRv1xv?mode=ems_copy_t"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-green-500 hover:bg-green-600 transition-colors shadow-md font-semibold text-white"
