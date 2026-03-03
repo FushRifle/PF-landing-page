@@ -20,6 +20,14 @@ export const footerDetails: {
         {
             text: "Contact",
             url: "#contact"
+        },
+        {
+            text: "Privacy Policy",
+            url: "/privacy"
+        },
+        {
+            text: "Account Deletion",
+            url: "/delete"
         }
     ],
     email: 'support@parentfullyapp.com',
