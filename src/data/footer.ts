@@ -18,8 +18,8 @@ export const footerDetails: {
             url: "#about"
         },
         {
-            text: "Contact",
-            url: "#contact"
+            text: "Terms and Conditions",
+            url: "/terms"
         },
         {
             text: "Privacy Policy",

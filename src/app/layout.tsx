@@ -44,7 +44,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.className} ${sourceSans.className} antialiased`}>
-        {/* Google Analytics (only if gaId is defined) */}
         {siteDetails.googleAnalyticsId && (
           <GoogleAnalytics gaId={siteDetails.googleAnalyticsId} />
         )}
@@ -52,8 +51,6 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-
-        {/* Vercel Analytics */}
         <Analytics />
       </body>
     </html>
