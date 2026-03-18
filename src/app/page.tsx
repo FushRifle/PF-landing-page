@@ -3,16 +3,16 @@ import Features from "@/components/Logos";
 import Container from "@/components/Container";
 import CTA from "@/components/CTA";
 import WhyChoose from "@/components/Choose";
-import EarlyAccess from "@/components/EarlyAccess";
+import Benefits from "@/components/Benefits/Benefits";
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
       <Container>
+        <Benefits />
         <Features />
         <WhyChoose />
-        <EarlyAccess />
         <CTA />
       </Container>
     </>

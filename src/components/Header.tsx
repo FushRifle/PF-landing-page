@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import { HiOutlineXMark, HiBars3 } from 'react-icons/hi2';
-import Image from 'next/image';
 
 import Container from './Container';
 import { siteDetails } from '@/data/siteDetails';
@@ -14,9 +14,6 @@ const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
-
-    // Scroll listener for background change
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
@@ -25,99 +22,99 @@ const Header: React.FC = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 
-                ${scrolled ? 'bg-white shadow-md' : 'bg-[#E2FDF8]'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${scrolled
+                ? 'pt-2 md:pt-4'
+                : 'pt-0'
                 }`}
         >
-            <Container className="!px-0">
-                <nav className="mx-auto flex justify-between items-center py-3 px-4 sm:px-6 md:px-10 lg:px-20">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 md:ml-12">
+            <Container>
+                <nav
+                    className={`mx-auto transition-all duration-500 ease-in-out px-6 md:px-10 py-4 flex items-center justify-between ${scrolled
+                        ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/20 rounded-[2rem]'
+                        : 'bg-transparent rounded-none'
+                        }`}
+                >
+                    {/* Enhanced Logo - Made significantly larger */}
+                    <Link href="/" className="relative z-10 flex-shrink-0 transition-transform active:scale-95">
                         <Image
-                            src="/images/logo.png"
+                            src="/ParentFully.png"
                             alt={siteDetails.siteName}
-                            width={90}
-                            height={65}
-                            className="object-contain h-auto w-[80px] sm:w-[100px] md:w-[110px]"
+                            width={160}
+                            height={60}
+                            className="w-auto h-10 md:h-14 lg:h-16 object-contain"
+                            priority
                         />
                     </Link>
 
-                    {/* Desktop Menu */}
-                    <ul className="hidden md:flex space-x-6 items-center">
-                        {menuItems.map((item) => (
-                            <li key={item.text}>
-                                <Link
-                                    href={item.url}
-                                    className="text-foreground hover:text-foreground-accent transition-colors"
-                                >
-                                    {item.text}
-                                </Link>
-                            </li>
-                        ))}
-                        <li>
-                            <Link
-                                href="#cta"
-                                scroll={true}
-                                className="text-white bg-[#F38500] hover:bg-primary-accent px-6 py-2 rounded-lg transition-colors"
-                            >
-                                Join Waitlist
-                            </Link>
-                        </li>
-                    </ul>
+                    {/* Desktop Navigation - Clean & Spaced */}
+                    <div className="hidden md:flex items-center gap-10">
+                        <ul className="flex items-center gap-10">
+                            {menuItems.map((item) => (
+                                <li key={item.text}>
+                                    <Link
+                                        href={item.url}
+                                        className="text-[15px] font-semibold text-slate-700 hover:text-orange-500 transition-colors tracking-tight"
+                                    >
+                                        {item.text}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
 
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
-                        <button
-                            onClick={toggleMenu}
-                            type="button"
-                            className="bg-[#F38500] text-white rounded-full w-10 h-10 flex items-center justify-center"
-                            aria-controls="mobile-menu"
-                            aria-expanded={isOpen}
+                        <Link
+                            href="/download"
+                            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3.5 rounded-2xl text-[15px] font-bold shadow-[0_10px_20px_-10px_rgba(243,133,0,0.5)] transition-all hover:-translate-y-0.5 active:translate-y-0"
                         >
-                            {isOpen ? (
-                                <HiOutlineXMark className="h-6 w-6" />
-                            ) : (
-                                <HiBars3 className="h-6 w-6" />
-                            )}
-                            <span className="sr-only">Toggle navigation</span>
-                        </button>
+                            Download Now
+                        </Link>
                     </div>
+
+                    {/* Mobile Menu Button - Minimalist Style */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden p-3 text-slate-800 bg-slate-100/50 rounded-2xl hover:bg-slate-200/50 transition-colors"
+                        aria-label="Toggle Menu"
+                    >
+                        {isOpen ? <HiOutlineXMark size={24} /> : <HiBars3 size={24} />}
+                    </button>
                 </nav>
             </Container>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu - Floating Card Style */}
             <Transition
                 show={isOpen}
-                enter="transition ease-out duration-200 transform"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="transition ease-in duration-150 transform"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="transition duration-300 ease-out"
+                enterFrom="opacity-0 scale-95 translate-y-[-20px]"
+                enterTo="opacity-100 scale-100 translate-y-0"
+                leave="transition duration-200 ease-in"
+                leaveFrom="opacity-100 scale-100 translate-y-0"
+                leaveTo="opacity-0 scale-95 translate-y-[-20px]"
             >
-                <div id="mobile-menu" className="md:hidden bg-white shadow-lg w-full">
-                    <ul className="flex flex-col space-y-4 pt-4 pb-6 px-6">
-                        {menuItems.map((item) => (
-                            <li key={item.text}>
+                <div className="px-4 mt-4 md:hidden">
+                    <div className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden">
+                        <ul className="flex flex-col p-8 gap-6">
+                            {menuItems.map((item) => (
+                                <li key={item.text}>
+                                    <Link
+                                        href={item.url}
+                                        onClick={() => setIsOpen(false)}
+                                        className="text-xl font-bold text-slate-800 hover:text-orange-500"
+                                    >
+                                        {item.text}
+                                    </Link>
+                                </li>
+                            ))}
+                            <li className="pt-4">
                                 <Link
-                                    href={item.url}
-                                    className="text-foreground hover:text-primary block text-lg"
-                                    onClick={toggleMenu}
+                                    href="#cta"
+                                    onClick={() => setIsOpen(false)}
+                                    className="block w-full text-center bg-orange-500 text-white py-5 rounded-[1.5rem] text-lg font-black shadow-lg"
                                 >
-                                    {item.text}
+                                    Download App
                                 </Link>
                             </li>
-                        ))}
-                        <li>
-                            <Link
-                                href="#cta"
-                                className="text-white bg-[#F38500] hover:bg-primary-accent px-5 py-3 rounded-lg block w-full text-center text-lg"
-                                onClick={toggleMenu}
-                            >
-                                Join Waitlist
-                            </Link>
-                        </li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </Transition>
         </header>

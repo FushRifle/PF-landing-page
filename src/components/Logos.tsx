@@ -1,108 +1,116 @@
+"use client";
 import { FC } from "react";
 import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
 
 const features = [
     {
         title: "Goal Setting",
-        description:
-            "Help your child grow with structured, age-appropriate goals that make learning and development fun and measurable.",
-        icon: (
-            <Icon
-                icon="octicon:goal-16"
-                className="w-12 h-12 text-[#B35D00] bg-[#FFEFDF] rounded-full p-1"
-            />
-        ),
+        description: "Help your child grow with structured, age-appropriate goals that make development fun and measurable.",
+        icon: "octicon:goal-16",
+        iconColor: "text-[#B35D00]",
+        bgColor: "bg-[#FFEFDF]",
     },
     {
         title: "Routine Builder",
-        description:
-            "Create and track daily routines with tasks and reminders to help kids stay consistent and build positive habits.",
-        icon: (
-            <Icon
-                icon="streamline:recycle-1-solid"
-                className="w-12 h-12 text-emerald-400 bg-[#E2FDF8] rounded-full p-1"
-            />
-        ),
+        description: "Create and track daily routines with tasks and reminders to build positive habits and consistency.",
+        icon: "streamline:recycle-1-solid",
+        iconColor: "text-emerald-500",
+        bgColor: "bg-[#E2FDF8]",
     },
     {
         title: "Discipline Planner",
-        description:
-            "Encourage good behavior through positive reinforcement and gentle discipline tools that promote responsibility.",
-        icon: (
-            <Icon
-                icon="streamline:good-health-and-well-being-solid"
-                className="w-12 h-12 text-blue-500 bg-[#E2FDF8] rounded-full p-1"
-            />
-        ),
+        description: "Encourage good behavior through positive reinforcement tools that promote responsibility.",
+        icon: "streamline:good-health-and-well-being-solid",
+        iconColor: "text-blue-500",
+        bgColor: "bg-[#D0E8FF]",
     },
     {
         title: "Budget Management",
-        description:
-            "Track contributions, manage shared expenses, and stay transparent about your child’s needs without conflict.",
-        icon: (
-            <Icon
-                icon="iconoir:wallet-solid"
-                className="w-12 h-12 text-[#5208F2] bg-[#E7DCFF] rounded-full p-1"
-            />
-        ),
+        description: "Track contributions and manage shared expenses transparently without the usual conflict.",
+        icon: "iconoir:wallet-solid",
+        iconColor: "text-[#5208F2]",
+        bgColor: "bg-[#E7DCFF]",
     },
     {
         title: "Community",
-        description:
-            "Connect with other parents, share experiences, and learn from a supportive network that understands your journey.",
-        icon: (
-            <Icon
-                icon="fluent-color:people-community-32"
-                className="w-12 h-12 text-[#3DCBFF] bg-[#D3F1FF] rounded-full p-1"
-            />
-        ),
+        description: "Connect with other parents and learn from a supportive network that understands your journey.",
+        icon: "fluent-color:people-community-32",
+        iconColor: "text-[#3DCBFF]",
+        bgColor: "bg-[#D3F1FF]",
     },
     {
         title: "Chat",
-        description:
-            "Communicate seamlessly with your co-parent — keeping all child-related discussions in one secure place.",
-        icon: (
-            <Icon
-                icon="ant-design:message-filled"
-                className="w-12 h-12 text-[#4CAF50] bg-[#E1FCE3] rounded-full p-1"
-            />
-        ),
+        description: "Communicate seamlessly with your co-parent—keeping all child-related discussions in one place.",
+        icon: "ant-design:message-filled",
+        iconColor: "text-[#4CAF50]",
+        bgColor: "bg-[#E1FCE3]",
     },
 ];
 
+const containerVariants = {
+    offscreen: { opacity: 0 },
+    onscreen: {
+        opacity: 1,
+        transition: { staggerChildren: 0.1 }
+    }
+};
+
+const cardVariants = {
+    offscreen: { opacity: 0, y: 20 },
+    onscreen: {
+        opacity: 1,
+        y: 0,
+        transition: { type: "spring", bounce: 0.4, duration: 0.8 }
+    }
+};
+
 export const Features: FC = () => {
     return (
-        <section className="py-16 bg-[#FFFDF8]">
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Heading */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-green-800">
-                        Everything You Need For Better Parenting
-                    </h2>
-                    <p className="text-gray-600 mt-2">
-                        Powerful Features Designed to support you every step of the way
-                    </p>
-                </div>
+        <section className="relative py-24 bg-[#FFFDF8] overflow-hidden">
+            {/* Background Glows to match Hero */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-100/40 blur-[120px] rounded-full -mr-64 -mt-32" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-100/40 blur-[120px] rounded-full -ml-64 -mb-32" />
 
-                {/* Responsive Grid */}
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative max-w-7xl mx-auto px-6">
+                {/* Grid of Cards */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+                >
                     {features.map((feature, idx) => (
-                        <div
+                        <motion.div
                             key={idx}
-                            className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition flex flex-col"
+                            variants={cardVariants}
+                            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                            className="group p-8 bg-white border border-gray-100 rounded-[2.5rem] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col items-start text-left"
                         >
-                            <div className="mb-4 w-16 h-16 flex items-center justify-center">
-                                {feature.icon}
+                            {/* Icon Container */}
+                            <div className={`mb-6 p-4 rounded-2xl ${feature.bgColor} transition-transform duration-500 group-hover:rotate-6`}>
+                                <Icon
+                                    icon={feature.icon}
+                                    className={`w-8 h-8 ${feature.iconColor}`}
+                                />
                             </div>
-                            <h3 className="text-xl font-semibold text-gray-800">
+
+                            {/* Text content */}
+                            <h3 className="text-2xl font-bold text-[#005A31] group-hover:text-[#F38500] transition-colors duration-300">
                                 {feature.title}
                             </h3>
-                            <p className="mt-3 text-[#72706F] text-base leading-relaxed">
+                            <p className="mt-4 text-[#72706F] text-base leading-relaxed">
                                 {feature.description}
                             </p>
-                        </div>
+
+                            {/* Subtle "Learn More" or Arrow that appears on hover */}
+                            <div className="mt-6 flex items-center gap-2 text-sm font-bold text-[#005A31] opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+                                Explore Detail <span className="text-lg">→</span>
+                            </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

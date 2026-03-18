@@ -48,6 +48,8 @@ export interface ISocials {
     threads?: string;
     twitter?: string;
     youtube?: string;
+    whatsapp?: string;
+    telegram?: string;
     x?: string;
     [key: string]: string | undefined;
 }

@@ -18,29 +18,16 @@ export const footerDetails: {
             url: "#about"
         },
         {
-            text: "Terms and Conditions",
-            url: "/terms"
+            text: "Benefits",
+            url: "#benefits"
         },
-        {
-            text: "Privacy Policy",
-            url: "/privacy"
-        },
-        {
-            text: "Account Deletion",
-            url: "/delete"
-        }
+
     ],
     email: 'support@parentfullyapp.com',
     telephone: '+1 514 249 7924',
     socials: {
-        // github: 'https://github.com',
-        // x: 'https://twitter.com/x',
-        // twitter: 'https://twitter.com/Twitter',
-        // youtube: 'https://youtube.com',
-        // threads: 'https://www.threads.net',
-        //facebook: 'https://facebook.com',
-        // linkedin: 'https://www.linkedin.com',
-        //instagram: 'https://www.instagram.com',
+        youtube: 'https://youtube.com',
+        instagram: 'https://www.instagram.com',
         whatsapp: 'https://chat.whatsapp.com/EhY7ONsphWX1NmBmhGTHUS?mode=ems_copy_chat_link',
         telegram: 'https://t.me/+NJfluxRPQsBlZGI5',
     }
