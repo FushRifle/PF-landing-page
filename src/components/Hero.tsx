@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
                 </p>
 
                 {/* Unified Download Button */}
-                <div className="mt-10 flex flex-col sm:flex-row gap-4 z-50">
+                <div className="mt-10 flex flex-col sm:flex-row gap-4 z-20">
                     <Link
                         href="/download"
                         className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-white transition-all duration-300 bg-[#F38500] rounded-[2rem] hover:bg-[#005A31] hover:shadow-[0_20px_40px_rgba(0,90,49,0.2)] active:scale-95 overflow-hidden"
@@ -70,21 +70,31 @@ const Hero: React.FC = () => {
 
                     {/* Left Mockup (Side) */}
                     <div className="absolute left-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] -translate-x-12 sm:-translate-x-20 opacity-40 blur-[1px] -rotate-12 hidden sm:block">
-                        <Image src={heroDetails.extraMock1}
-                            className="object-contain" alt="app feature" />
+                        <Image
+                            src={heroDetails.extraMock1}
+                            width={320}  // Add this - use the actual image width
+                            height={600} // Add this - use the actual image height
+                            className="object-contain w-full h-full"
+                            alt="app feature"
+                        />
                     </div>
 
                     {/* Right Mockup (Side) */}
                     <div className="absolute right-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] translate-x-12 sm:translate-x-20 opacity-40 blur-[1px] rotate-12 hidden sm:block">
-                        <Image src={heroDetails.extraMock2}
-                            className="object-contain" alt="app feature" />
+                        <Image
+                            src={heroDetails.extraMock2}
+                            width={320}  // Add this
+                            height={600} // Add this
+                            className="object-contain w-full h-full"
+                            alt="app feature"
+                        />
                     </div>
-
                     {/* Center Mockup - The Anchor */}
                     <div className="relative z-20 w-[280px] sm:w-[340px] md:w-[400px] h-full transition-transform duration-700 hover:scale-[1.02]">
                         <Image
                             src={heroDetails.centerImageSrc}
-                            quality={100}
+                            width={400}
+                            height={600}
                             alt="main app mockup"
                             className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
                         />

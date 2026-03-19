@@ -37,7 +37,7 @@ const Header: React.FC = () => {
                     {/* Enhanced Logo - Made significantly larger */}
                     <Link href="/" className="relative z-10 flex-shrink-0 transition-transform active:scale-95">
                         <Image
-                            src="/ParentFully.png"
+                            src="/icons/ParentFully.png"
                             alt={siteDetails.siteName}
                             width={160}
                             height={60}

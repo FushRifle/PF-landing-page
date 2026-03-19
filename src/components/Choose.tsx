@@ -74,6 +74,7 @@ export default function WhyChoose() {
                         <Image
                             src={heroDetails.extraMock2}
                             priority
+                            fill
                             alt="app preview"
                             className="object-contain"
                         />
