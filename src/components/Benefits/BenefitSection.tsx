@@ -6,6 +6,7 @@ import BenefitBullet from "./BenefitBullet";
 import SectionTitle from "../SectionTitle";
 import { IBenefit } from "@/types";
 
+
 interface Props {
     benefit: IBenefit;
     imageAtRight?: boolean;
@@ -76,7 +77,7 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
                     className="w-full lg:w-1/2 flex justify-center items-center relative"
                     variants={childVariants}
                 >
-                    {/* Visual Flourish: Glass Circle */}
+                    {/* Visual Flourish */}
                     <div className="absolute w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-orange-400/10 blur-[100px] rounded-full -z-10" />
                     <div className="absolute inset-0 scale-90 bg-white/30 backdrop-blur-xl border border-white/50 rounded-[3rem] shadow-2xl -rotate-6 -z-10 hidden md:block" />
 
