@@ -63,7 +63,6 @@ const DownloadPage = () => {
                                    <Image
                                         src={heroDetails.centerImageSrc}
                                         fill
-                                        priority
                                         className="object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.12)]"
                                         alt="App Preview"
                                    />

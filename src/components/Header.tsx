@@ -42,7 +42,6 @@ const Header: React.FC = () => {
                             width={160}
                             height={60}
                             className="w-auto h-10 md:h-14 lg:h-16 object-contain"
-                            priority
                         />
                     </Link>
 

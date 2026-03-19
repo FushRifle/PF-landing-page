@@ -83,7 +83,6 @@ const Hero: React.FC = () => {
                         <Image
                             src={heroDetails.centerImageSrc}
                             fill
-                            priority
                             quality={100}
                             alt="main app mockup"
                             className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
