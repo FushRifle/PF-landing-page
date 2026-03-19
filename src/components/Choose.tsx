@@ -14,7 +14,7 @@ const reasons = [
 
 export default function WhyChoose() {
     return (
-        <section className="relative bg-white py-24 lg:py-32 overflow-hidden">
+        <section className="relative bg-white py-12 lg:py-12 overflow-hidden">
             {/* Subtle Gradient Background */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-50/40 via-transparent to-transparent -z-10" />
 
@@ -60,7 +60,6 @@ export default function WhyChoose() {
 
                 {/* --- Right Visual: The "Hero" Mockup --- */}
                 <div className="relative flex justify-center lg:justify-end">
-                    {/* The "Glow" - softer and more organic */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#E2FDF8]/60 blur-[120px] rounded-full -z-10" />
 
                     {/* The Mockup - Clean, No Frame, High Shadow */}
@@ -76,7 +75,7 @@ export default function WhyChoose() {
                             priority
                             fill
                             alt="app preview"
-                            className="object-contain"
+                            className="object-contain  w-full h-full"
                         />
                     </motion.div>
                 </div>
