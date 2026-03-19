@@ -71,7 +71,8 @@ const Hero: React.FC = () => {
                     {/* Left Mockup (Side) */}
                     <div className="absolute left-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] -translate-x-12 sm:-translate-x-20 opacity-40 blur-[1px] -rotate-12 hidden sm:block">
                         <Image
-                            src={heroDetails.extraMock1}
+                            src='/images/Mock3.png'
+                            quality={100}
                             fill
                             priority
                             className="object-contain w-full h-full"
@@ -82,7 +83,8 @@ const Hero: React.FC = () => {
                     {/* Right Mockup (Side) */}
                     <div className="absolute right-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] translate-x-12 sm:translate-x-20 opacity-40 blur-[1px] rotate-12 hidden sm:block">
                         <Image
-                            src={heroDetails.extraMock2}
+                            src='/images/Mock2.png'
+                            quality={100}
                             fill
                             priority
                             className="object-contain w-full h-full"
@@ -92,14 +94,13 @@ const Hero: React.FC = () => {
                     {/* Center Mockup - The Anchor */}
                     <div className="relative z-20 w-[280px] sm:w-[340px] md:w-[400px] h-full transition-transform duration-700 hover:scale-[1.02]">
                         <Image
-                            src={heroDetails.centerImageSrc}
-                            fill
+                            src='/images/Mock1.png'
+                            quality={100}
                             priority
+                            fill
                             alt="main app mockup"
                             className="object-contain w-full h-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
                         />
-
-                        {/* --- BENTO CARDS (Positioned relative to the Center Mockup) --- */}
 
                         {/* 1. Shared Calendar - Top Left */}
                         <div className="absolute -top-6 -left-12 sm:-left-32 z-40 animate-float">

@@ -71,7 +71,8 @@ export default function WhyChoose() {
                         className="relative w-[300px] sm:w-[380px] md:w-[420px] h-[600px] sm:h-[750px] md:h-[820px] drop-shadow-[0_50px_80px_rgba(0,0,0,0.12)]"
                     >
                         <Image
-                            src={heroDetails.extraMock2}
+                            src='/images/Mock3.png'
+                            quality={100}
                             priority
                             fill
                             alt="app preview"
