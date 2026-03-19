@@ -70,19 +70,20 @@ const Hero: React.FC = () => {
 
                     {/* Left Mockup (Side) */}
                     <div className="absolute left-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] -translate-x-12 sm:-translate-x-20 opacity-40 blur-[1px] -rotate-12 hidden sm:block">
-                        <Image src={heroDetails.extraMock1} fill className="object-contain" alt="app feature" />
+                        <Image src={heroDetails.extraMock1}
+                            className="object-contain" alt="app feature" />
                     </div>
 
                     {/* Right Mockup (Side) */}
                     <div className="absolute right-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] translate-x-12 sm:translate-x-20 opacity-40 blur-[1px] rotate-12 hidden sm:block">
-                        <Image src={heroDetails.extraMock2} fill className="object-contain" alt="app feature" />
+                        <Image src={heroDetails.extraMock2}
+                            className="object-contain" alt="app feature" />
                     </div>
 
                     {/* Center Mockup - The Anchor */}
                     <div className="relative z-20 w-[280px] sm:w-[340px] md:w-[400px] h-full transition-transform duration-700 hover:scale-[1.02]">
                         <Image
                             src={heroDetails.centerImageSrc}
-                            fill
                             quality={100}
                             alt="main app mockup"
                             className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"

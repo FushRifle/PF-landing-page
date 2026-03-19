@@ -85,7 +85,7 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
                         <Image
                             src={imageSrc}
                             alt={title}
-                            fill
+                            priority
                             className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                         />
                     </div>
