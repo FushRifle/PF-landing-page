@@ -69,9 +69,9 @@ const Hero: React.FC = () => {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-orange-400/10 blur-[120px] rounded-full -z-10" />
 
                     {/* Left Mockup (Side) */}
-                    <div className="absolute left-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] -translate-x-12 sm:-translate-x-20 opacity-40 blur-[1px] -rotate-12 hidden sm:block">
+                    <div className="absolute left-0 bottom-0 w-[200px] sm:w-[260px] md:w-[550px] h-[100%] -translate-x-12 sm:-translate-x-40 -rotate-12 hidden sm:block">
                         <Image
-                            src='/images/Mock3.png'
+                            src='/mocks/mock2.png'
                             quality={100}
                             fill
                             priority
@@ -81,9 +81,9 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* Right Mockup (Side) */}
-                    <div className="absolute right-0 bottom-0 w-[200px] sm:w-[260px] md:w-[320px] h-[85%] translate-x-12 sm:translate-x-20 opacity-40 blur-[1px] rotate-12 hidden sm:block">
+                    <div className="absolute right-0 bottom-0 w-[200px] sm:w-[260px] md:w-[420px] h-full translate-x-12 sm:translate-x-20 rotate-12 hidden sm:block">
                         <Image
-                            src='/images/Mock2.png'
+                            src='/mocks/mock8.png'
                             quality={100}
                             fill
                             priority
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
                     {/* Center Mockup - The Anchor */}
                     <div className="relative z-20 w-[280px] sm:w-[340px] md:w-[400px] h-full transition-transform duration-700 hover:scale-[1.02]">
                         <Image
-                            src='/images/Mock1.png'
+                            src='/mocks/mock1.png'
                             quality={100}
                             priority
                             fill
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
                             className="object-contain w-full h-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
                         />
 
-                        {/* 1. Shared Calendar - Top Left */}
+                        {/* 1. Shared Calendar - Top Left 
                         <div className="absolute -top-6 -left-12 sm:-left-32 z-40 animate-float">
                             <div className="bg-white/95 backdrop-blur-md border border-white shadow-xl rounded-2xl p-4 w-44 sm:w-52 flex items-start gap-3">
                                 <div className="w-9 h-9 rounded-lg bg-[#E2FDF8] flex items-center justify-center flex-shrink-0">
@@ -115,7 +115,6 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 2. Goal Tracker - Top Right */}
                         <div className="absolute top-10 -right-12 sm:-right-32 z-40 animate-float delay-700">
                             <div className="bg-white/95 backdrop-blur-md border border-white shadow-xl rounded-2xl p-4 w-44 sm:w-52 flex items-start gap-3">
                                 <div className="w-9 h-9 rounded-lg bg-[#FFF4E5] flex items-center justify-center flex-shrink-0">
@@ -128,7 +127,6 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 3. Budgeting - Middle Left */}
                         <div className="absolute top-1/2 -left-16 sm:-left-44 z-40 animate-float delay-1000">
                             <div className="bg-white/95 backdrop-blur-md border border-white shadow-xl rounded-2xl p-4 w-44 sm:w-52 flex items-start gap-3">
                                 <div className="w-9 h-9 rounded-lg bg-[#E7DCFF] flex items-center justify-center flex-shrink-0">
@@ -141,7 +139,6 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 4. Chat - Middle Right */}
                         <div className="absolute top-[60%] -right-16 sm:-right-44 z-40 animate-float delay-300">
                             <div className="bg-white/95 backdrop-blur-md border border-white shadow-xl rounded-2xl p-4 w-44 sm:w-52 flex items-start gap-3">
                                 <div className="w-9 h-9 rounded-lg bg-[#D3F1FF] flex items-center justify-center flex-shrink-0">
@@ -154,7 +151,6 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 5. Reminders - Bottom Center */}
                         <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-40 animate-float delay-500">
                             <div className="bg-white/95 backdrop-blur-md border border-white shadow-2xl rounded-2xl p-4 w-52 sm:w-60 flex items-start gap-3">
                                 <div className="w-9 h-9 rounded-lg bg-[#E2FDF8] flex items-center justify-center flex-shrink-0">
@@ -166,6 +162,7 @@ const Hero: React.FC = () => {
                                 </div>
                             </div>
                         </div>
+                        */}
                     </div>
                 </div>
             </div>

@@ -1,72 +1,76 @@
-import { FiBarChart2, FiBriefcase, FiDollarSign, FiLock, FiPieChart, FiShield, FiTarget, FiTrendingUp, FiUser } from "react-icons/fi";
-
 import { IBenefit } from "@/types"
+import {
+    FiUser, FiStar, FiUsers, FiCalendar, FiClock,
+    FiCheckCircle, FiZap, FiTarget, FiTrendingUp, FiAward,
+    FiHeart,
+    FiShield,
+} from "react-icons/fi";
 
 export const benefits: IBenefit[] = [
     {
-        title: "Smart Budgeting",
-        description: "Take the guesswork out of managing your money. Our AI-powered budgeting tool adapts to your lifestyle and helps you stay on track.",
+        title: "Child Profile Management",
+        description: "Create and manage profiles for multiple family members with shared calendars, tasks, and responsibilities.",
         bullets: [
             {
-                title: "Intelligent Categorization",
-                description: "Automatically sorts your transactions for crystal-clear insights.",
-                icon: <FiBarChart2 size={26} />
+                title: "Multi-Profile Support",
+                description: "Easily switch between family member profiles with role-based permissions and customized views.",
+                icon: <FiUsers size={26} />  // Multiple people/family
             },
             {
-                title: "Customizable Goals",
-                description: "Set and track financial objectives that matter to you.",
-                icon: <FiTarget size={26} />
+                title: "Shared Family Calendar",
+                description: "Coordinate family activities, appointments, and events across all profiles in one synchronized schedule.",
+                icon: <FiCalendar size={26} />  // Scheduling and planning
             },
             {
-                title: "Predictive Analysis",
-                description: "Get ahead of your finances with spending forecasts and alerts.",
-                icon: <FiTrendingUp size={26} />
+                title: "Activity History Log",
+                description: "Maintain a complete record of all family interactions, tasks completed, and milestone achievements.",
+                icon: <FiClock size={26} />  // History and timeline
             }
         ],
-        imageSrc: "/images/mockup-1.webp"
+        imageSrc: "/mocks/mock5.png"
     },
     {
-        title: "Seamless Investing",
-        description: "Start building wealth today, no financial degree required. Finwise makes investing accessible and straightforward.",
+        title: "Routine Management System",
+        description: "Establish structured daily routines that promote consistency, responsibility, and healthy habits for your children.",
         bullets: [
             {
-                title: "Micro-Investing",
-                description: "Begin with as little as $1 and watch your money grow.",
-                icon: <FiDollarSign size={26} />
+                title: "Customizable Schedules",
+                description: "Create personalized routines for mornings, homework, chores, and bedtime with flexible timing options.",
+                icon: <FiClock size={26} />  // Time management
             },
             {
-                title: "Expert Portfolios",
-                description: "Choose from investment strategies tailored to your risk tolerance.",
-                icon: <FiBriefcase size={26} />
+                title: "Task Completion Tracking",
+                description: "Monitor completion of daily responsibilities with visual progress indicators and achievement badges.",
+                icon: <FiCheckCircle size={26} />  // Task completion
             },
             {
-                title: "Real-Time Performance",
-                description: "Track your investments with easy-to-understand metrics and visuals.",
-                icon: <FiPieChart size={26} />
+                title: "Smart Notifications",
+                description: "Receive timely reminders for upcoming tasks, routine transitions, and pending responsibilities.",
+                icon: <FiZap size={26} />  // Alerts and reminders
             }
         ],
-        imageSrc: "/images/mockup-2.webp"
+        imageSrc: "/mocks/mock4.png"
     },
     {
-        title: "Bank-Grade Security",
-        description: "Your financial data deserves the best protection. Rest easy knowing Finwise employs cutting-edge security measures.",
+        title: "Goal Achievement Framework",
+        description: "Foster personal growth with structured goal-setting tools that make development measurable, achievable, and rewarding.",
         bullets: [
             {
-                title: "Military-Grade Encryption",
-                description: "Your information is safeguarded with the highest level of encryption.",
-                icon: <FiLock size={26} />
+                title: "SMART Goal Planning",
+                description: "Set Specific, Measurable, Achievable, Relevant, and Time-bound objectives with guided workflows.",
+                icon: <FiTarget size={26} />  // Goals and targets
             },
             {
-                title: "Biometric Authentication",
-                description: "Access your account securely with fingerprint or facial recognition.",
-                icon: <FiUser size={26} />
+                title: "Progress Analytics",
+                description: "Visualize advancement with detailed metrics, completion rates, and achievement trends over time.",
+                icon: <FiTrendingUp size={26} />  // Growth and progress
             },
             {
-                title: "Real-Time Fraud Detection",
-                description: "Our system constantly monitors for suspicious activity to keep your money safe.",
-                icon: <FiShield size={26} />
+                title: "Milestone Rewards System",
+                description: "Celebrate accomplishments with customizable reward systems that motivate continued growth and effort.",
+                icon: <FiAward size={26} />  // Rewards and recognition
             }
         ],
-        imageSrc: "/images/mockup-1.webp"
+        imageSrc: "/mocks/mock6.png"
     },
-]
+];

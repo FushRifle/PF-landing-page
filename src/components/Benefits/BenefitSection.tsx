@@ -81,15 +81,18 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
                     <div className="absolute w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-orange-400/10 blur-[100px] rounded-full -z-10" />
                     <div className="absolute inset-0 scale-90 bg-white/30 backdrop-blur-xl border border-white/50 rounded-[3rem] shadow-2xl -rotate-6 -z-10 hidden md:block" />
 
-                    {/* Unified Mockup sizing */}
-                    <div className="relative w-[280px] sm:w-[320px] md:w-[380px] h-[560px] sm:h-[640px] md:h-[760px] transition-transform hover:scale-[1.02] duration-700 animate-float">
-                        <Image
-                            src={imageSrc}
-                            alt={title}
-                            fill
-                            priority
-                            className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-                        />
+                    {/* Option 1: With float animation on wrapper */}
+                    <div className="animate-float">
+                        <div className="relative w-[280px] sm:w-[320px] md:w-[380px] h-[560px] sm:h-[640px] md:h-[760px] transition-transform hover:scale-[1.02] duration-700">
+                            <Image
+                                src={imageSrc}
+                                alt={title}
+                                fill
+                                priority
+                                quality={100}
+                                className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                            />
+                        </div>
                     </div>
                 </motion.div>
             </motion.div>

@@ -6,7 +6,6 @@ import {
      Search,
      MessageCircle,
      BookOpen,
-     Zap,
      ChevronDown,
      Send,
      ArrowRight
@@ -25,11 +24,13 @@ const HelpCenter = () => {
 
      return (
           <div className="min-h-screen bg-[#FDFCFB]">
+
+
                {/* --- Hero Search Section --- */}
-               <section className="bg-[#005A31] pt-32 pb-24 px-6 relative overflow-hidden">
+               <section className="bg-[#005A31] pt-32 pb-24 px-6 relative overflow-hidden inset-0 backdrop-blur-lg bg-white/40">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-[#F38500]/10 blur-[100px] rounded-full" />
                     <div className="max-w-4xl mx-auto text-center relative z-10">
-                         <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
+                         <h1 className="text-4xl md:text-6xl text-[#F38500]text-white tracking-tighter mb-6">
                               How can we <span className="text-[#F38500]">help?</span>
                          </h1>
                          <div className="relative max-w-2xl mx-auto">
