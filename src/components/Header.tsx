@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Transition } from '@headlessui/react';
-import { HiOutlineXMark, HiBars3 } from 'react-icons/hi2';
+import { HiOutlineChevronDown, HiOutlineXMark, HiBars3 } from 'react-icons/hi2';
 
 import Container from './Container';
 import { siteDetails } from '@/data/siteDetails';
@@ -18,6 +18,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ navigationItems = defaultMenuItems }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
     const [scrolled, setScrolled] = useState(false);
     const [isDarkSurface, setIsDarkSurface] = useState(false);
 
@@ -77,13 +78,32 @@ const Header: React.FC<HeaderProps> = ({ navigationItems = defaultMenuItems }) =
                     <div className="hidden md:flex items-center gap-8">
                         <ul className="flex items-center gap-8">
                             {navigationItems.map((item) => (
-                                <li key={item.text}>
-                                    <Link
-                                        href={item.url}
-                                        className={`text-[17px] font-semibold tracking-tight transition-colors ${linkClass}`}
-                                    >
-                                        {item.text}
-                                    </Link>
+                                <li key={item.text} className="group relative">
+                                    {item.children?.length ? (
+                                        <button
+                                            type="button"
+                                            className={`flex items-center gap-1.5 text-[17px] font-semibold tracking-tight transition-colors ${linkClass}`}
+                                            aria-haspopup="menu"
+                                        >
+                                            {item.text}
+                                            <HiOutlineChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
+                                        </button>
+                                    ) : (
+                                        <Link href={item.url} className={`text-[17px] font-semibold tracking-tight transition-colors ${linkClass}`}>
+                                            {item.text}
+                                        </Link>
+                                    )}
+                                    {item.children?.length ? (
+                                        <div className="invisible absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 translate-y-2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                                            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
+                                                {item.children.map((child) => (
+                                                    <Link key={child.text} href={child.url} className="block rounded-xl px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-emerald-50 hover:text-[#005A31]">
+                                                        {child.text}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ) : null}
                                 </li>
                             ))}
                         </ul>
@@ -122,13 +142,32 @@ const Header: React.FC<HeaderProps> = ({ navigationItems = defaultMenuItems }) =
                         <ul className="flex flex-col p-8 gap-6">
                             {navigationItems.map((item) => (
                                 <li key={item.text}>
-                                    <Link
-                                        href={item.url}
-                                        onClick={() => setIsOpen(false)}
-                                        className="text-xl font-bold text-slate-800 hover:text-orange-500"
-                                    >
-                                        {item.text}
-                                    </Link>
+                                    {item.children?.length ? (
+                                        <>
+                                            <button
+                                                type="button"
+                                                onClick={() => setOpenMobileDropdown((current) => current === item.text ? null : item.text)}
+                                                className="flex w-full items-center justify-between text-left text-xl font-bold text-slate-800 hover:text-orange-500"
+                                                aria-expanded={openMobileDropdown === item.text}
+                                            >
+                                                {item.text}
+                                                <HiOutlineChevronDown className={`h-5 w-5 transition-transform ${openMobileDropdown === item.text ? 'rotate-180' : ''}`} />
+                                            </button>
+                                            {openMobileDropdown === item.text ? (
+                                                <div className="mt-3 flex flex-col gap-2 border-l-2 border-emerald-100 pl-4">
+                                                    {item.children.map((child) => (
+                                                        <Link key={child.text} href={child.url} onClick={() => setIsOpen(false)} className="rounded-lg px-3 py-2 text-base font-bold text-slate-600 hover:bg-emerald-50 hover:text-[#005A31]">
+                                                            {child.text}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            ) : null}
+                                        </>
+                                    ) : (
+                                        <Link href={item.url} onClick={() => setIsOpen(false)} className="text-xl font-bold text-slate-800 hover:text-orange-500">
+                                            {item.text}
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                             <li className="pt-4">

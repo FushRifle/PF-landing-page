@@ -1,183 +1,27 @@
-"use client";
+import LegalDocument, { LegalSection } from '@/components/LegalDocument';
 
-import React from "react";
-import { Shield, Lock, Eye, FileText, Scale, UserCheck, Zap } from "lucide-react";
+const sections: LegalSection[] = [
+    { id: 'what', title: '1. What Parentfully Does', paragraphs: ['Parentfully helps parents and caregivers organize family life. This may include routines, schedules, skill-based goals for each child, behaviour notes, discipline plans, family communication, responsibilities, family or child-related financial records, feedback, suggestions, and feature requests.', 'Because Parentfully may involve family and child-related information, we take privacy seriously.'] },
+    { id: 'collection', title: '2. Information We Collect', paragraphs: ['We may collect the following types of information.', 'Account Information: name; email address; phone number, if provided; password or login details; profile photo, if provided; and account settings.', 'Location Information: Parentfully may collect your city and country. We do not collect your exact street address or live GPS location unless clearly stated and requested in the app.', 'Family and Child Information: child name; child age or date of birth; child routines; school or activity schedules; child goals and progress; behaviour notes; parenting observations; discipline plans; family responsibilities; and caregiver or co-parent information.', 'Scheduling and Routine Information: daily routines; calendar entries; reminders; appointments; school events; extracurricular activities; drop-off and pick-up arrangements; and parenting time schedules, where applicable.', 'Communication Information: messages between invited parents, co-parents, caregivers, or family members; notes; agreements; updates; and shared decisions.', 'Financial Organization Information: family and/or child-related expenses; payment notes; contribution records; reimbursement requests; and shared budgeting information. Parentfully is not a bank or payment processor.', 'Feedback, Suggestions, and Feature Requests: We may collect and review this information to improve Parentfully, fix issues, develop new features, and understand user needs.', 'Device and Usage Information: device type; operating system; app version; login dates; feature usage; crash reports; error logs; and general analytics.', 'Payment Information: If you purchase a paid plan, payment may be processed by a third-party provider such as Google Play Store or Apple App Store. We may receive basic payment status information, but we do not store full credit card details.'] },
+    { id: 'permissions', title: '3. App Permissions We May Request', paragraphs: ['Parentfully may request certain permissions from your device.', 'Contacts Permission: Parentfully may request contact access to help you invite a co-parent, caregiver, guardian, or family member. We only use contact access to support app features. We do not sell your contacts.', 'Camera Permission: Parentfully may request camera access so you can upload or capture images, such as profile photos, child-related records, or family documentation.', 'Alarm Permission: Parentfully may request alarm permission to help reminders, routines, and scheduled parenting tasks work properly.', 'Notification Permission: Parentfully may request notification permission to send reminders, updates, routine alerts, schedule alerts, account messages, and important app notifications.', 'You can manage permissions through your device settings. Some features may not work properly if you turn off certain permissions.'] },
+    { id: 'use', title: '4. How We Use Your Information', paragraphs: ['We use your information to:'], bullets: ['create and manage your account;', 'provide Parentfully features;', 'organize family routines, schedules, goals, notes, and records;', 'send reminders and notifications;', 'allow invited users to collaborate within a family space;', 'allow users to leave feedback, request features, and make suggestions;', 'improve the app;', 'provide customer support;', 'manage subscriptions and payments;', 'protect the safety and security of the app;', 'comply with legal obligations.'] },
+    { id: 'consent', title: '5. Legal Basis and Consent', paragraphs: ['We collect and use personal information with your consent, where required, and for purposes that are reasonable for providing Parentfully.', 'By using Parentfully and entering information into the app, you consent to the collection and use of that information as described in this Privacy Policy.', 'Where required by law, you may withdraw consent. However, some features may no longer work if we cannot use the information needed to provide them.'] },
+    { id: 'children', title: '6. Children’s Privacy', paragraphs: ['Parentfully is designed for use by parents, guardians, and authorized caregivers.', 'Children should not create accounts without the consent and supervision of a parent or legal guardian.', 'Parents and guardians are responsible for deciding what child-related information they enter into Parentfully.', 'We do not knowingly collect personal information directly from children without parental consent.', 'If you believe a child has provided information without proper consent, please contact us at admin@parentfullyapp.com.'] },
+    { id: 'invited', title: '7. Sharing Information With Invited Users', paragraphs: ['Parentfully may allow you to share family information with invited users, such as a spouse, co-parent, guardian, caregiver, or family member.', 'When you invite someone to your family space, that person may be able to see information you choose to share.', 'You are responsible for inviting only people who are allowed to access the child or family information.', 'You can manage access through your account settings, where available.'] },
+    { id: 'sharing', title: '8. When We Share Information', paragraphs: ['We do not sell your personal information. We may share information only in limited situations.', 'Service Providers: We may use trusted service providers to help us operate Parentfully, such as hosting, cloud storage, analytics, payment processing, app distribution, app updates or app performance tools. These providers may only use information as needed to provide services to Parentfully.', 'Legal Requirements: We may share information if required by law, court order, legal process, or government request.', 'Safety Protection: We may share information if we believe it is necessary to protect a child, user, another person, Parentfully, or the public from serious harm.', 'Business Changes: If Parentfully is involved in a merger, sale, financing, acquisition, or business transfer, user information may be transferred as part of that process, where allowed by law.'] },
+    { id: 'third-party', title: '9. Third-Party Tools and Services', paragraphs: ['Parentfully uses third-party tools and services to operate, host, analyze, improve, distribute, and support the app. These services may process limited personal information only as needed to provide their services to Parentfully.', 'Current third-party tools used by Parentfully include Google Play Store, Apple App Store, Google Analytics, and DigitalOcean.', 'Google Play Store is used for Android app distribution, app downloads, app updates, and where applicable, payment or subscription processing. Apple App Store is used for iOS app distribution, app downloads, app updates, and where applicable, payment or subscription processing. Google Analytics helps us understand app or website usage, improve user experience, and monitor general performance. DigitalOcean provides hosting, cloud infrastructure, data storage, and app operation.', 'These third-party providers may process information according to their own privacy policies and security practices. Parentfully does not sell your personal information. If we add or change major third-party tools in the future, we may update this Privacy Policy.'] },
+    { id: 'security', title: '10. Data Storage and Security', paragraphs: ['Parentfully uses reasonable safeguards to protect your personal information.', 'Data is encrypted. We use encryption to help protect information in transit and at rest, where applicable.', 'However, no app, website, or online system can be guaranteed to be 100% secure.', 'You are also responsible for keeping your password and device secure.'] },
+    { id: 'retention', title: '11. Data Retention', paragraphs: ['We keep personal information only as long as needed for the purposes described in this Privacy Policy, unless a longer period is required by law.', 'You may delete your account inside the Parentfully app.', 'When you delete your account, your account information and related data may be deleted or deactivated, subject to legal, security, backup, dispute resolution, or recordkeeping requirements.', 'Some information may remain in backups for a limited time before being fully removed.', 'You may also contact us at admin@parentfullyapp.com for privacy-related requests.'] },
+    { id: 'rights', title: '12. Your Privacy Rights', paragraphs: ['Depending on where you live, you may have rights to:', 'To make a request, contact us at admin@parentfullyapp.com.', 'We may need to verify your identity before responding.'], bullets: ['access your personal information;', 'correct inaccurate information;', 'withdraw consent;', 'request deletion of certain information;', 'ask questions about how your information is used;', 'make a privacy complaint.'] },
+    { id: 'canada', title: '13. Quebec and Canadian Privacy Notice', paragraphs: ['Parentfully is based in Montreal, Quebec, Canada.', 'Parentfully aims to handle personal information in line with applicable Canadian and Quebec privacy requirements.', 'Privacy Officer, Pilandres Solutions Inc. is the privacy contact person for Parentfully.', 'Privacy questions, requests, or complaints can be sent to admin@parentfullyapp.com.'] },
+    { id: 'transfers', title: '14. International Storage and Transfers', paragraphs: ['Some service providers may store or process information outside Quebec or outside Canada. When information is processed outside your province or country, it may be subject to the laws of that location.', 'We take reasonable steps to protect information when it is handled by service providers.'] },
+    { id: 'cookies', title: '15. Cookies and Website Tracking', paragraphs: ['If you use the Parentfully website, we may use cookies or similar technologies to:', 'You may be able to control cookies through your browser settings.'], bullets: ['remember your preferences;', 'understand website use;', 'improve user experience;', 'support analytics or marketing.'] },
+    { id: 'analytics', title: '16. Analytics and App Performance', paragraphs: ['We may use analytics and crash-reporting tools to understand how users use Parentfully and to improve the app.', 'These tools may collect device and usage information, such as app version, device type, error reports, and general feature usage.', 'We aim to collect only what is needed to operate, secure, and improve the service.'] },
+    { id: 'marketing', title: '17. Marketing Communications', paragraphs: ['If you sign up for emails, updates, or promotions, we may send you Parentfully news, parenting resources, or product updates.', 'You can unsubscribe from marketing emails at any time.', 'Important service messages, such as account, security, billing, or policy updates, may still be sent.'] },
+    { id: 'changes', title: '18. Changes to This Privacy Policy', paragraphs: ['We may update this Privacy Policy from time to time.', 'If we make important changes, we may notify you through the app, email, or website.', 'The updated policy will show the new “Last Updated” date.'] },
+    { id: 'contact', title: '19. Contact Us', paragraphs: ['For privacy questions, requests, or complaints, contact us at:', 'Parentfully / Pilandres Solutions Inc.\n350 Boulevard de Maisonneuve Ouest\nH3A 0B4\nMontreal, Quebec, Canada\nPrivacy Contact Person: Privacy Officer, Pilandres Solutions Inc.\nEmail: admin@parentfullyapp.com\nWebsite: parentfullyapp.com'] },
+];
 
-const PrivacyPolicy = () => {
-     const lastUpdated = "September 27, 2025";
-
-     const sections = [
-          { id: "collection", title: "1. Information We Collect", icon: <Eye size={18} /> },
-          { id: "usage", title: "2. How We Use Your Information", icon: <Zap size={18} /> },
-          { id: "sharing", title: "3. Information Sharing", icon: <UserCheck size={18} /> },
-          { id: "security", title: "4. Data Security", icon: <Lock size={18} /> },
-          { id: "rights", title: "5. Your Rights", icon: <Scale size={18} /> },
-          { id: "contact", title: "6. Contact Us", icon: <FileText size={18} /> },
-     ];
-
-     return (
-          <div className="min-h-screen bg-[#F8FAFC] py-20 px-6 mt-20">
-               <div className="max-w-5xl mx-auto">
-
-                    {/* Header Card */}
-                    <div className="bg-[#005A31] rounded-[2.5rem] p-10 md:p-16 mb-12 text-white relative overflow-hidden shadow-2xl">
-                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full -mr-20 -mt-20" />
-                         <div className="relative z-10">
-                              <div className="flex items-center gap-3 mb-6">
-                                   <Shield className="text-[#F38500]" size={32} />
-                                   <span className="uppercase tracking-[0.2em] text-sm font-bold opacity-80">Legal Document</span>
-                              </div>
-                              <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Privacy Policy</h1>
-                              <p className="text-emerald-50/70 max-w-xl text-lg">
-                                   At Parentfully, your family&apos;s privacy is not just a feature. It is our foundation.
-                                   Here is how we protect your data.
-                              </p>
-                              <div className="mt-8 inline-block px-5 py-2 bg-white/10 rounded-full text-sm font-medium border border-white/20">
-                                   Effective Date: {lastUpdated}
-                              </div>
-                         </div>
-                    </div>
-
-                    <div className="grid lg:grid-cols-[250px_1fr] gap-12">
-
-                         {/* Sticky Sidebar Navigation */}
-                         <aside className="hidden lg:block">
-                              <div className="sticky top-32 space-y-2">
-                                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 px-4">Contents</p>
-                                   {sections.map((s) => (
-                                        <a
-                                             key={s.id}
-                                             href={`#${s.id}`}
-                                             className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white hover:text-[#005A31] hover:shadow-sm transition-all font-medium text-sm"
-                                        >
-                                             {s.icon}
-                                             {s.title.split('. ')[1]}
-                                        </a>
-                                   ))}
-                              </div>
-                         </aside>
-
-                         {/* Main Content Area */}
-                         <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-gray-100 prose prose-slate max-w-none">
-
-                              <p className="text-xl text-gray-600 leading-relaxed italic mb-10">
-                                   <strong>Parentfully (Pilandres Inc.)</strong> is committed to protecting the
-                                   privacy and security of your personal information. This policy describes how we
-                                   collect, use, and share information in connection with our services.
-                              </p>
-
-                              <div id="collection" className="scroll-mt-32 mb-12">
-                                   <h2 className="flex items-center gap-3 text-2xl font-bold text-[#005A31] mb-6">
-                                        <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-sm font-bold">1</span>
-                                        Information We Collect
-                                   </h2>
-                                   <div className="grid md:grid-cols-2 gap-4">
-                                        {[
-                                             { label: "Account", desc: "Your name, email address, and registration details." },
-                                             { label: "Family", desc: "Your child's age, notes, and family unit structure." },
-                                             { label: "Usage", desc: "Device information, app activity, and settings." },
-                                             { label: "Content", desc: "Goals, routines, and securely uploaded documents." }
-                                        ].map((item, idx) => (
-                                             <div key={idx} className="p-5 rounded-2xl bg-gray-50 border border-gray-100">
-                                                  <p className="font-bold text-[#005A31] mb-1">{item.label}</p>
-                                                  <p className="text-sm text-gray-600 leading-snug">{item.desc}</p>
-                                             </div>
-                                        ))}
-                                   </div>
-                              </div>
-
-                              <hr className="my-10 border-gray-100" />
-
-                              <div id="usage" className="scroll-mt-32 mb-12 text-gray-700">
-                                   <h2 className="flex items-center gap-3 text-2xl font-bold text-[#005A31] mb-6">
-                                        <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-sm font-bold">2</span>
-                                        How We Use Your Information
-                                   </h2>
-                                   <ul className="space-y-4 list-none p-0">
-                                        {[
-                                             "Synchronize calendars, routines, and goals across family members.",
-                                             "Send service-related notifications and reminders.",
-                                             "Securely manage and store uploaded documents.",
-                                             "Analyze anonymized data to improve the product."
-                                        ].map((li, i) => (
-                                             <li key={i} className="flex gap-3 items-start">
-                                                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#F38500] flex-shrink-0" />
-                                                  <span>{li}</span>
-                                             </li>
-                                        ))}
-                                   </ul>
-                                   <div className="mt-8 p-4 bg-orange-50 rounded-xl border border-orange-100 flex items-center gap-3 text-orange-800 font-bold text-sm">
-                                        <Shield size={18} />
-                                        We do not sell or rent personal information to third parties.
-                                   </div>
-                              </div>
-
-                              <hr className="my-10 border-gray-100" />
-
-                              <div id="sharing" className="scroll-mt-32 mb-12 text-gray-700">
-                                   <h2 className="flex items-center gap-3 text-2xl font-bold text-[#005A31] mb-6">
-                                        <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-sm font-bold">3</span>
-                                        Information Sharing
-                                   </h2>
-                                   <p className="leading-relaxed">
-                                        We only share information when it is needed to provide Parentfully, comply with
-                                        the law, protect our users, or work with trusted service providers who support
-                                        our operations.
-                                   </p>
-                                   <ul className="mt-5 space-y-4 list-none p-0">
-                                        {[
-                                             "With family members or caregivers you invite to your account.",
-                                             "With trusted service providers who help us operate and secure the app.",
-                                             "When required by law or necessary to protect rights, safety, and security."
-                                        ].map((li, i) => (
-                                             <li key={i} className="flex gap-3 items-start">
-                                                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#F38500] flex-shrink-0" />
-                                                  <span>{li}</span>
-                                             </li>
-                                        ))}
-                                   </ul>
-                              </div>
-
-                              <div id="security" className="scroll-mt-32 mb-12 p-8 bg-[#005A31]/5 rounded-[2rem] border border-[#005A31]/10">
-                                   <h2 className="text-2xl font-bold text-[#005A31] mb-4 flex items-center gap-2">
-                                        <Lock className="text-[#F38500]" /> 4. Data Security
-                                   </h2>
-                                   <p className="m-0 text-gray-700 leading-relaxed">
-                                        All data is stored on secure, encrypted servers. <strong>End-to-end encryption</strong> is implemented for
-                                        private messaging. We use regular monitoring and security controls to help prevent unauthorized access.
-                                   </p>
-                              </div>
-
-                              <div id="rights" className="scroll-mt-32 mb-12">
-                                   <h2 className="text-2xl font-bold text-[#005A31] mb-6">5. Your Rights</h2>
-                                   <div className="flex flex-wrap gap-3">
-                                        {["Access Data", "Correct Errors", "Delete Information", "Export Data", "Withdraw Consent"].map((right) => (
-                                             <span key={right} className="px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold text-gray-600 italic">
-                                                  {right}
-                                             </span>
-                                        ))}
-                                   </div>
-                                   <p className="mt-6 text-gray-600">
-                                        You can submit privacy requests directly to <strong className="text-[#005A31]">admin@parentfullyapp.com</strong>.
-                                   </p>
-                              </div>
-
-                              {/* Footer Contact */}
-                              <div id="contact" className="scroll-mt-32 mt-20 pt-10 border-t border-gray-100 text-center">
-                                   <h3 className="text-xl font-bold text-[#005A31] mb-2">6. Contact Us</h3>
-                                   <p className="text-gray-500 mb-6">Questions about this policy? Reach out anytime.</p>
-                                   <a
-                                        href="mailto:admin@parentfullyapp.com"
-                                        className="inline-flex items-center gap-2 bg-[#F38500] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-orange-200 transition-all active:scale-95"
-                                   >
-                                        <FileText size={18} /> Email Support
-                                   </a>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     );
-};
-
-export default PrivacyPolicy;
+export default function PrivacyPolicyPage() {
+    return <LegalDocument eyebrow="Privacy and data" title="Privacy Policy" summary="Parentfully respects your privacy. This Privacy Policy explains how we collect, use, store, share, and protect personal information when you use the Parentfully app, website, and related services." lastUpdated="6 June 2026" sections={sections} />;
+}
